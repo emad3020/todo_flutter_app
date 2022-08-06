@@ -17,9 +17,12 @@ class AppCubit extends Cubit<AppStates> {
     DoneTasksScreen(),
     ArchivedTasksScreen(),
   ];
-  List<Map> tasksList = [];
+  List<Map> newTasksList = [];
+  List<Map> doneTasksList = [];
+  List<Map> archivedTasksList = [];
   List<String> titles = ["Home", "Done", "Archived"];
   late Database database;
+
   static AppCubit get(context) => BlocProvider.of(context);
   bool isSheetOpened = false;
   IconData fabIcon = Icons.edit;
@@ -46,10 +49,7 @@ class AppCubit extends Cubit<AppStates> {
             .catchError((e) => print('Can\'t create tables ${e.toString()}'));
       },
       onOpen: (db) {
-        loadTasks(db).then((value) {
-          tasksList = value;
-          emit(AppGetDatabaseState());
-        });
+        loadTasks(db);
         print('Database opened');
       },
     ).then((value) {
@@ -71,17 +71,47 @@ class AppCubit extends Cubit<AppStates> {
         emit(AppInsertDatabaseState());
         print('$value  Inserted successfully');
 
-        loadTasks(database).then((value) {
-          tasksList = value;
-          emit(AppGetDatabaseState());
-        });
+        loadTasks(database);
       }).catchError((e) => print('Error while insert data ${e.toString()}'));
     });
   }
 
-  Future<List<Map>> loadTasks(database) async {
+  void updateTaskStatus({
+    required String newStatus,
+    required int taskId,
+  }) async {
+    database.rawUpdate('UPDATE tasks SET status = ? WHERE _id = ? ',
+        ['$newStatus', taskId]).then((value) {
+      emit(AppUpdateDatabaseState());
+      loadTasks(database);
+    });
+  }
+
+  void loadTasks(database) {
+    newTasksList.clear();
+    doneTasksList.clear();
+    archivedTasksList.clear();
     emit(AppGetDatabaseLoadingState());
-    return await database.rawQuery('SELECT * FROM tasks');
+    database.rawQuery('SELECT * FROM tasks').then((value) {
+      value.forEach((element) {
+        if (element['status'] == 'new') {
+          newTasksList.add(element);
+        } else if (element['status'] == 'done') {
+          doneTasksList.add(element);
+        } else {
+          archivedTasksList.add(element);
+        }
+      });
+      emit(AppGetDatabaseState());
+    });
+  }
+
+  void deleteTask({required int id}) {
+    database.rawDelete('DELETE FROM tasks WHERE _id= ?', [id]).then((value) {
+      print('Task deleted');
+      loadTasks(database);
+      emit(AppDeleteDatabaseState());
+    });
   }
 
   void changeBottomSheetState(bool isShown, IconData icon) {
