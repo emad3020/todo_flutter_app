@@ -14,6 +14,41 @@ Navigate to the project directory and run the command
 `` flutter pub get ``
 
 then you can run the application for any platform you want Android, iOS, macOS, or even Windows
+## Screen Shots and Gallery
+<div style="text-align: center">
+    <table border="0" style="border: 1px solid: #000">
+        <tr>
+<td style ="text-align: center">
+<a href="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_164900.png">
+<img src="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_164900.png?raw=true">
+</a>
+</td>
+<td style ="text-align: center">
+<a href="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165038.png">
+<img src="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165038.png?raw=true">
+</a>
+</td>
+<td style ="text-align: center">
+<a href="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165057.png">
+<img src="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165057.png?raw=true">
+</a>
+</td>
+</tr>
+<tr>
+<td style ="text-align: center">
+<a href="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165122.png">
+<img src="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165122.png?raw=true">
+</a>
+</td>
+<td style ="text-align: center">
+<a href="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165302.png">
+<img src="https://github.com/emad3020/todo_flutter_app/blob/main/assets/images/Screenshot_20220815_165302.png?raw=true">
+</a>
+</td>
+</tr>
+</table>
+</div>
+
 
 ## Resources and Books
 A few resources to get you started if this is your first Flutter project:
