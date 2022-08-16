@@ -63,5 +63,8 @@ Pull requests are welcome. For significant changes, please open an issue to disc
 
 Please make sure to update tests as appropriate.
 
+<h3 align="left">Support:</h3>
+<p><a href="https://ko-fi.com/emadahmed994"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="emadahmed994" /></a></p><br><br>
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
